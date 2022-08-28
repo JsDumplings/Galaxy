@@ -5,10 +5,11 @@ import {
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { setBackground } from './../components/StarrySky'
+import sun from './../components/planet/sun/body'
 
 const init = DivEl => {
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 100000);
     const renderer = new THREE.WebGLRenderer();
     // camera.position.z = 5;
     // camera.position.y = 5;
@@ -25,6 +26,8 @@ const init = DivEl => {
     // 星空背景
     let bg = setBackground()
     scene.add(bg)
+    // 太阳
+    scene.add(sun)
 
     renderer.setSize(window.innerWidth, window.innerHeight);
     DivEl.current.appendChild(renderer.domElement);
