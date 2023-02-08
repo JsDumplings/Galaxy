@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import spotImg from './../../asset/images/spot.png'
 const setBackground = () => {
     // 定义点光源
     const geometry = new THREE.BufferGeometry();
@@ -18,8 +19,9 @@ const setBackground = () => {
     }
     geometry.setAttribute( 'position', new THREE.Float32BufferAttribute( vertices, 3 ) );
     geometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
+    // geometry.boundingSphere()
     let textureLoader = new THREE.TextureLoader();
-    let texture = textureLoader.load('http://182.43.179.137:81/public/images/texture-smoke.png'); //加载纹理贴图
+    let texture = textureLoader.load(spotImg); //加载纹理贴图
     let starsMaterial = new THREE.PointsMaterial({
          map: texture,
          size: 1,
@@ -30,7 +32,7 @@ const setBackground = () => {
          sizeAttenuation: true,
     })
     let stars = new THREE.Points(geometry, starsMaterial);
-    stars.scale.set(300, 300, 300);
+    stars.scale.set(2000, 2000, 2000);
     return stars
 }
 
